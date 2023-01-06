@@ -45,14 +45,14 @@ const lowerCase = (input) => {
   return input.toLowerCase();
 };
 
-const playerInput = () => {
-  const input = lowerCase(prompt("Choose rock, paper or scissors!"));
-  if (!choice.includes(input)) {
-    alert("Try again!");
-    return playerInput();
-  }
-  return input;
-};
+// const playerInput = () => {
+//   const input = lowerCase(prompt("Choose rock, paper or scissors!"));
+//   if (!choice.includes(input)) {
+//     alert("Try again!");
+//     return playerInput();
+//   }
+//   return input;
+// };
 
 const game = function (round) {
   for (let i = round; i >= 0; i--) {
