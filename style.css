@@ -66,4 +66,18 @@ body {
   text-align: center;
   padding: 2rem 4rem;
   font-weight: 700;
+  border-radius: 10px;
+  transition: 0.3s all;
+}
+
+.choose:hover {
+  color: #fff;
+  background-color: red;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.choose:active {
+  color: rgb(182, 182, 182);
+  background-color: rgb(165, 0, 0);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
 }
