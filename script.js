@@ -6,9 +6,9 @@ const buttons = document.querySelectorAll(".choice");
 const playerScore = document.querySelector(".points-player");
 const computerScore = document.querySelector(".points-computer");
 const answers = document.querySelector(".answers");
+const again = document.querySelector(".again");
 
 const choice = ["rock", "paper", "scissors"];
-let round = 5;
 //points[0] is player, points[1] is computer
 let points = [0, 0];
 let play = true;
@@ -96,3 +96,13 @@ const winner = () => {
   // ?
   // : ;
 };
+
+const startAgain = function () {
+  play = true;
+  points = [0, 0];
+  playerScore.textContent = points[0];
+  computerScore.textContent = points[1];
+  answers.textContent = " ";
+};
+
+again.addEventListener("click", startAgain);
