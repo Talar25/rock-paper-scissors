@@ -1,9 +1,29 @@
 "use stricts";
+const buttons = document.querySelectorAll(".choice");
+// const rock = document.querySelector(".choose.rock");
+// const paper = document.querySelector(".choose.paper");
+// const scissors = document.querySelector(".choose.scissors");
+const playerScore = document.querySelector(".points-player");
+const computerScore = document.querySelector(".points-computer");
+const answers = document.querySelector(".answers");
 
 const choice = ["rock", "paper", "scissors"];
 let round = 5;
 //points[0] is player, points[1] is computer
 let points = [0, 0];
+let play = true;
+
+const selection = function (e) {
+  if (play) {
+    const player = e.target.id;
+    const computer = getComputerChoice();
+    playRound(player, computer);
+    playerScore.textContent = points[0];
+    computerScore.textContent = points[1];
+    if (points[0] === 3 || points[1] === 3) return winner();
+  }
+};
+buttons.forEach((button) => button.addEventListener("click", selection));
 
 const getComputerChoice = function () {
   const random = Math.floor(Math.random() * 3);
@@ -12,47 +32,45 @@ const getComputerChoice = function () {
 
 const playRound = function (player, computer) {
   if (player === computer) {
-    round++;
-    return "It is a draw";
+    createAnswer(player, computer);
   } else if (player === choice[0]) {
     if (computer === choice[1]) {
+      createAnswer(player, computer);
       points[1]++;
-      return `Computer wins ${computer} beats ${player}`;
     } else if (computer === choice[2]) {
+      createAnswer(player, computer);
       points[0]++;
-      return `You win ${player} beats ${computer}`;
     }
   } else if (player === choice[1]) {
     if (computer === choice[0]) {
+      createAnswer(player, computer);
       points[0]++;
-      return `You win ${player} beats ${computer}`;
     } else if (computer === choice[2]) {
+      createAnswer(player, computer);
       points[1]++;
-      return `Computer wins ${computer} beats ${player}`;
     }
   } else if (player === choice[2]) {
     if (computer === choice[0]) {
+      createAnswer(player, computer);
       points[1]++;
-      return `Computer wins ${computer} beats ${player}`;
     } else if (computer === choice[1]) {
+      createAnswer(player, computer);
       points[0]++;
-      return `You win ${player} beats ${computer}`;
     }
   }
+};
+
+const createAnswer = function (player, computer) {
+  answers.textContent = `${player} vs ${computer}`;
 };
 
 const lowerCase = (input) => {
   return input.toLowerCase();
 };
 
-// const playerInput = () => {
-//   const input = lowerCase(prompt("Choose rock, paper or scissors!"));
-//   if (!choice.includes(input)) {
-//     alert("Try again!");
-//     return playerInput();
-//   }
-//   return input;
-// };
+const playerInput = (input) => {
+  return input;
+};
 
 const game = function (round) {
   for (let i = round; i >= 0; i--) {
@@ -65,9 +83,16 @@ const game = function (round) {
 };
 
 const winner = () => {
-  return points[0] > points[1]
-    ? `You win the game, score is ${points[0]} vs ${points[1]}`
-    : `Computer wins the game, score is ${points[0]} vs ${points[1]}`;
+  play = false;
+  if (points[0] > points[1]) {
+    const p = document.createElement("p");
+    p.textContent = `You win the game, score is ${points[0]} vs ${points[1]}`;
+    answers.appendChild(p);
+  } else {
+    const p = document.createElement("p");
+    p.textContent = `Computer wins the game, score is ${points[0]} vs ${points[1]}`;
+    answers.appendChild(p);
+  }
+  // ?
+  // : ;
 };
-
-console.log(game(round));

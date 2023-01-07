@@ -53,13 +53,18 @@ body {
   font-size: 2.5rem;
 }
 
-.choose-box {
+.choice-box {
   display: flex;
   justify-content: center;
   gap: 4rem;
+  margin-bottom: 10rem;
 }
 
-.choose {
+.choice:link,
+.choice:visited {
+  text-decoration: none;
+  color: #5c5c5c;
+  display: inline-block;
   flex: 1;
   border: 2px solid #000;
   font-size: 3rem;
@@ -70,14 +75,28 @@ body {
   transition: 0.3s all;
 }
 
-.choose:hover {
+.choice:hover {
   color: #fff;
   background-color: red;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
-.choose:active {
+.choice:active {
   color: rgb(182, 182, 182);
   background-color: rgb(165, 0, 0);
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.answers {
+  max-width: 70rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.answers > * {
+  font-size: 3rem;
+  color: red;
 }
